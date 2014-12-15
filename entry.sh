@@ -13,6 +13,7 @@ echo "password = ${PASSWORD}" >> /etc/siege/siegerc
 echo "follow-location = false" >> /etc/siege/siegerc
 echo "internet = true" >> /etc/siege/siegerc
 echo "delay = 3" >> /etc/siege/siegerc
+echo "show-logfile = false" >> /etc/siege/siegerc
 cat /etc/siege/siegerc | grep -v '^#'
 
 #Add urls to urls.txt for testing.
