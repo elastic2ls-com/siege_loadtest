@@ -14,7 +14,6 @@ echo "follow-location = false" >> /etc/siege/siegerc
 echo "internet = true" >> /etc/siege/siegerc
 echo "delay = 3" >> /etc/siege/siegerc
 echo "show-logfile = false" >> /etc/siege/siegerc
-cat /etc/siege/siegerc | grep -v '^#'
 
 #Add urls to urls.txt for testing.
 for ((i=0; i<${#URLS[@]}; ++i)); do
@@ -22,12 +21,10 @@ for ((i=0; i<${#URLS[@]}; ++i)); do
     echo "${DOMAIN}${ENDPOINT}" >> /etc/siege/urls.txt;
 done
 
+#Add host file configs if any.
 for ((i=0; i<${#HOSTS[@]}; ++i)); do
     HOST=${HOSTS[$i]}
-    echo "${HOST}" >> /etc/hosts;
 done
-
-cat /etc/hosts
 
 siege -V
 siege "$@" 
