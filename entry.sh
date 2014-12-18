@@ -24,6 +24,7 @@ done
 #Add host file configs if any.
 for ((i=0; i<${#HOSTS[@]}; ++i)); do
     HOST=${HOSTS[$i]}
+    echo "${HOST}" >> /etc/hosts;
 done
 
 siege -V
