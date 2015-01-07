@@ -21,11 +21,15 @@ rawurlencode() {
 IFS="|"
 URLS=($URL_LIST)
 HOSTS=($ETC_HOSTS)
-USERNAME_ENCODED=$( rawurlencode "${USERNAME}" )
-LOGIN_URL_ENCODED=$( echo ${LOGIN_URL} | sed -e "s/{{USERNAME}}/${USERNAME_ENCODED}/g" | sed -e "s/{{PASSWORD}}/${PASSWORD}/g" )
+
+# configure login
+if ${USE_LOGIN}; then
+    USERNAME_ENCODED=$( rawurlencode "${USERNAME}" )
+    LOGIN_URL_ENCODED=$( echo ${LOGIN_URL} | sed -e "s/{{USERNAME}}/${USERNAME_ENCODED}/g" | sed -e "s/{{PASSWORD}}/${PASSWORD}/g" )
+    echo "login-url = ${DOMAIN}${LOGIN_URL_ENCODED}" >> /etc/siege/siegerc
+fi
 
 #CONFIGURE SIEGE SETTINGS
-echo "login-url = ${DOMAIN}${LOGIN_URL}" >> /etc/siege/siegerc
 echo "user-agent = Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0" >> /etc/siege/siegerc
 echo "follow-location = false" >> /etc/siege/siegerc
 echo "internet = true" >> /etc/siege/siegerc
