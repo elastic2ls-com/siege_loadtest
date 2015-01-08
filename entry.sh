@@ -2,8 +2,8 @@
 
 # variables
 IFS="|"
-URLS=($URL_LIST)
-HOSTS=($ETC_HOSTS)
+URLS=${URL_LIST}
+HOSTS=${ETC_HOSTS}
 
 # configure login
 if ${USE_LOGIN}; then
