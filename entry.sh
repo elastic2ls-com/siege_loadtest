@@ -7,7 +7,6 @@ HOSTS=${ETC_HOSTS}
 
 # configure login
 if ${USE_LOGIN}; then
-    LOGIN_URL=${2}
     echo ${LOGIN_URL}
     echo "login-url = ${DOMAIN}${LOGIN_URL}" >> /etc/siege/siegerc
 fi
