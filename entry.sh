@@ -1,22 +1,5 @@
 #!/bin/bash
 
-# function to urlencode username
-rawurlencode() {
-  local string="${1}"
-  local strlen=${#string}
-  local encoded=""
-
-  for (( pos=0 ; pos<strlen ; pos++ )); do
-     c=${string:$pos:1}
-     case "$c" in
-        [-_.~a-zA-Z0-9] ) o="${c}" ;;
-        * )               printf -v o '%%%02x' "'$c"
-     esac
-     encoded+="${o}"
-  done
-  echo "${encoded}"
-}
-
 # variables
 IFS="|"
 URLS=($URL_LIST)
@@ -24,10 +7,9 @@ HOSTS=($ETC_HOSTS)
 
 # configure login
 if ${USE_LOGIN}; then
-    USERNAME_ENCODED=$( rawurlencode "${3}" )
-    echo "USERNAME ENCODED = ${USERNAME_ENCODED}"
-    LOGIN_URL_ENCODED=$( echo ${2} | sed -e "s/{{USERNAME}}/${USERNAME_ENCODED}/g" | sed -e "s/{{PASSWORD}}/${PASSWORD}/g" )
-    echo "login-url = ${DOMAIN}${LOGIN_URL_ENCODED}" >> /etc/siege/siegerc
+    LOGIN_URL=${2}
+    echo ${LOGIN_URL}
+    echo "login-url = ${DOMAIN}${LOGIN_URL}" >> /etc/siege/siegerc
 fi
 
 #CONFIGURE SIEGE SETTINGS
