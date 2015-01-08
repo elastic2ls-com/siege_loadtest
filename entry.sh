@@ -25,7 +25,8 @@ HOSTS=($ETC_HOSTS)
 # configure login
 if ${USE_LOGIN}; then
     USERNAME_ENCODED=$( rawurlencode "${3}" )
-    LOGIN_URL_ENCODED=$( echo ${LOGIN_URL} | sed -e "s/{{USERNAME}}/${USERNAME_ENCODED}/g" | sed -e "s/{{PASSWORD}}/${PASSWORD}/g" )
+    echo "USERNAME ENCODED = ${USERNAME_ENCODED}"
+    LOGIN_URL_ENCODED=$( echo ${2} | sed -e "s/{{USERNAME}}/${USERNAME_ENCODED}/g" | sed -e "s/{{PASSWORD}}/${PASSWORD}/g" )
     echo "login-url = ${DOMAIN}${LOGIN_URL_ENCODED}" >> /etc/siege/siegerc
 fi
 
