@@ -7,7 +7,15 @@ NOTE: You do not need to build locally in order to run this app.
 
 To run, pass your custom parameters using the following format:
 
-```docker run -it -e DOMAIN="http://www.example.com" -e LOGIN_URL="/login.php&username=siegeuser%40someplace.com&password=Pa55word" -e USERNAME="siegeuser%40someplace.com" -e PASSWORD="Pa55word" -e URL_LIST="/userHome.php?page=accounting|/get.php|/api/JsonRPC/add_image/ POST /opt/post_json/post_image.json|/search?q=searchterm" jcostello84/siege_loadtest -v -c5 -r5```
+```
+docker run -it \
+-e DOMAIN="http://www.example.com" \
+-e LOGIN_URL="/login.php&username=siegeuser%40someplace.com&password=Pa55word" \
+-e USERNAME="siegeuser%40someplace.com" \
+-e PASSWORD="Pa55word" \
+-e URL_LIST="/userHome.php?page=accounting|/get.php|/api/JsonRPC/add_image/ POST /opt/post_json/post_image.json|/search?q=searchterm" \
+jcostello84/siege_loadtest -v -c5 -r5
+```
 
 1. ```DOMAIN=https://www.<SET_BASE_URL>.com``` Make sure to set http or https depending on your sites setup.
 2. ```LOGIN_URL="/login.php?username=siegeuser%40someplace.com&password=Password1&remember=1&softLogin=false"```
