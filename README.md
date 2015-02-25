@@ -4,8 +4,8 @@
 
 ### Running on Jenkins or from another CI
 -----------------------------------------
-```USE_LOGIN is a boolien field that tells the script whether or not to send load as a logged in user or not. ```
-```python ec2_loadtest.py "${DOMAIN}" "${USE_LOGIN}" "${LOGIN_URL}" "${URL_LIST}" "${ETC_HOSTS}" "${CONCURRENT}" "${REPS}" "${INSTANCE_TYPE}" "${NUM_INSTANCES}" "${BUILD_TAG}" "${REGION}" "${TIME}"```
+1. ```USE_LOGIN is a boolien field that tells the script whether or not to send load as a logged in user or not. ```
+1. ```python ec2_loadtest.py "${DOMAIN}" "${USE_LOGIN}" "${LOGIN_URL}" "${URL_LIST}" "${ETC_HOSTS}" "${CONCURRENT}" "${REPS}" "${INSTANCE_TYPE}" "${NUM_INSTANCES}" "${BUILD_TAG}" "${REGION}" "${TIME}"```
 
 
 ### Building and Running locally.
