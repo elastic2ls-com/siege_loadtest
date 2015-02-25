@@ -1,5 +1,15 @@
-### Building and Running
-------------------------
+###GENERATING AMI's on Amazon.
+1. Replace the ssh keys. ```grep -rin REPLACE_ME .```
+1. python create_amis.py 
+
+### Running on Jenkins or from another CI
+-----------------------------------------
+```USE_LOGIN is a boolien field that tells the script whether or not to send load as a logged in user or not. ```
+```python ec2_loadtest.py "${DOMAIN}" "${USE_LOGIN}" "${LOGIN_URL}" "${URL_LIST}" "${ETC_HOSTS}" "${CONCURRENT}" "${REPS}" "${INSTANCE_TYPE}" "${NUM_INSTANCES}" "${BUILD_TAG}" "${REGION}" "${TIME}"```
+
+
+### Building and Running locally.
+---------------------------
 1. ```cd to siege_loadtest/```
 2. ```docker build -t jcostello84/siege_loadtest .```
 
@@ -23,6 +33,7 @@ jcostello84/siege_loadtest -v -c5 -r5
 4. ```USERNAME="siegeuser%40someplace.com"```
 5. ```PASSWORD="Password1" ```
 6. ```ETC_HOSTS="192.168.1.1 www.example.com admin.example.com assets.example.com"```
+7. ```USE_LOGIN=True```
 
 ### Supported Commands
 ------------------------
