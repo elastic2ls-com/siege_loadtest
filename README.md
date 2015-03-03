@@ -1,3 +1,6 @@
+###DISCLAIMER: This project should only be used for load testing your own infrustructure or infrustructure that you have permission to test. 
+
+
 ###GENERATING AMI's on Amazon.
 1. Replace the ssh keys. ```grep -rin REPLACE_ME .```
 1. python create_amis.py 
